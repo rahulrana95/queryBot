@@ -10,7 +10,8 @@ var connection = mysql.createConnection({
   host     : 'testbot.c0ccjbvvdqns.us-east-2.rds.amazonaws.com',
   user     : 'maniax',
   password : '9068390682Rr',
-  database : 'testing'
+  database : 'testing',
+  port     : 3306
 });
 
 connection.connect();
