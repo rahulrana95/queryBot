@@ -41,6 +41,8 @@ router.post('/api',function(req,res){
         res.json({
           "status":"200"
         });
+        connection.end();
+
       }
 
 
@@ -52,6 +54,7 @@ router.post('/api',function(req,res){
 
 })
 );
+
 
 var server = app.listen(app.get('port'), function() {
   console.log('Listening on port ' + app.get('port'));
