@@ -25,7 +25,7 @@ router.use(bodyParser.urlencoded({ extended: false }));
 var home=router.get('/complaint',function(req,res){
     var off=10*parseInt(req.params.offset);
 
-    var q= `SELECT * FROM new_table LIMIT 10 OFFSET ${off}`;
+    var q= `SELECT * FROM complaint LIMIT 10 OFFSET ${off}`;
     connection.query(q,function(err,result){
 
       if(err){
