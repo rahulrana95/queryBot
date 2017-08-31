@@ -47,7 +47,7 @@ app.use(home);
 
 var pagination=router.get('/pagination',function(req,res){
 
-    var q= `SELECT COUNT(*) FROM complaint`;
+    var q= `SELECT COUNT(*) AS entries FROM complaint`;
     connection.query(q,function(err,result){
 
       if(err){
