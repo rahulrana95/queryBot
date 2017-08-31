@@ -14,7 +14,6 @@ var connection = mysql.createConnection({
   port     : 3306
 });
 
-connection.connect();
 
 
 app.set('port', process.env.PORT || 3000 );
