@@ -25,7 +25,7 @@ router.use(bodyParser.urlencoded({ extended: false }));
 var home=router.get('/complaint',function(req,res){
     var off=10*parseInt(req.query.offset);
 
-    var q= `SELECT * FROM complaint LIMIT 10 OFFSET ${off}`;
+    var q= `SELECT * FROM complaint LIMIT 10 OFFSET ${off} WHERE status = 1`;
     connection.query(q,function(err,result){
 
       if(err){
@@ -37,7 +37,7 @@ var home=router.get('/complaint',function(req,res){
       else {
         res.json({
           "status":"200",
-         "result":result	
+         "result":result
         });
       }
     });
