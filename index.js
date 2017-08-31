@@ -23,7 +23,7 @@ router.use(bodyParser.urlencoded({ extended: false }));
 
 
 var home=router.get('/complaint',function(req,res){
-    var off=10*parseInt(req.params.offset);
+    var off=10*parseInt(req.query.offset);
 
     var q= `SELECT * FROM complaint LIMIT 10 OFFSET ${off}`;
     connection.query(q,function(err,result){
