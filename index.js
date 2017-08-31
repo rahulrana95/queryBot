@@ -41,7 +41,7 @@ router.post('/api',function(req,res){
 
     var q= `INSERT INTO new_table VALUES ('','${query}','${dateTime}');`;
     connection.query(q,function(err,result){
-        
+
       if(err){
         console.log(err);
         res.json({
