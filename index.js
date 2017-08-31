@@ -21,6 +21,17 @@ app.set('port', process.env.PORT || 3000 );
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: false }));
 
+
+var home=router.get('/',function(req,res){
+
+  res.json({
+    "status":200
+  });
+
+});
+
+app.use(home);
+
 app.use(
 
 router.post('/api',function(req,res){
