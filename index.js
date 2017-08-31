@@ -6,7 +6,7 @@ var router =express.Router();
 var app = express();
 
 var mysql = require('mysql')
-var connection = mysql.createConnection({
+var connection = mysql.createPool({
   host     : 'testbot.c0ccjbvvdqns.us-east-2.rds.amazonaws.com',
   user     : 'maniax',
   password : '9068390682Rr',
