@@ -22,24 +22,10 @@ router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended: false }));
 
 
-var home=router.get('/',function(req,res){
-  res.json({
-    "status":200
-  });
+var home=router.get('/complain',function(req,res){
+    var off=10*parseInt(req.params.offset);
 
-});
-
-app.use(home);
-
-app.use(
-
-router.post('/api',function(req,res){
-
-    var query=req.body.query;
-    var dateTime=req.body.dateTime;
-
-
-    var q= `INSERT INTO new_table VALUES ('','${query}','${dateTime}');`;
+    var q= `SELECT * FROM new_table LIMIT 10 OFFSET off`;
     connection.query(q,function(err,result){
 
       if(err){
@@ -51,17 +37,51 @@ router.post('/api',function(req,res){
       else {
         res.json({
           "status":"200"
+           connection.query(q,function(err,result)
         });
-
       }
-
-
     });
+});
+
+app.use(home);
+
+app.use(
+
+router.post('/api',function(req,res){
 
 
+    var firstName = req.body['first name'];
+    var lastName = req.body['last name'];
+    var messengerUserId = req.body['messenger user id'];
+    var details = req.body['details'];
+    var photo = req.body['photo'];
+    var address = req.body['address'];
+    var city = req.body['city'];
+    var country = req.body['country'];
+    var gender = req.body['gender'];
+    var description = req.body['Description'];
+    var mapURL = req.body['map url'];
+    var state = req.body['state'];
+    var statusCheck = 1;
 
 
+    var q= `INSERT INTO complaint VALUES ('','${firstName}','${lastName}','${messengerUserId}','${details}','${photo}','${address}','${city}','${country}','${gender}','${description}','${mapURL}','${state}','${statusCheck}');`;
+    connection.query(q,function(err,result){
 
+      if(err){
+        console.log(err);
+        res.json({
+          "status" : "404",
+          "error" : err
+        });
+      }
+      else {
+        res.json({
+          "status" : "200",
+          "result" : result
+        });
+      }
+    });
 })
 );
 
