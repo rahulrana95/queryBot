@@ -45,6 +45,30 @@ var home=router.get('/complaint',function(req,res){
 
 app.use(home);
 
+var pagination=router.get('/pagination',function(req,res){
+
+    var q= `SELECT COUNT(*) FROM complaint`;
+    connection.query(q,function(err,result){
+
+      if(err){
+        console.log(err);
+        res.json({
+          "status":"404",
+          "error":err
+        });
+      }
+      else {
+        res.json({
+          "status":"200",
+         "result":result
+        });
+      }
+    });
+});
+
+app.use(pagination);
+
+
 app.use(
 
 router.post('/api',function(req,res){
