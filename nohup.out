@@ -1,0 +1,164 @@
+
+> querybot@1.0.0 start /home/ubuntu/queryBot
+> nodemon -e css,ejs,js,json --watch app 
+
+[33m[nodemon] 1.11.0[39m
+[33m[nodemon] to restart at any time, enter `rs`[39m
+[33m[nodemon] watching: app[39m
+[32m[nodemon] starting `node index.js`[39m
+events.js:163
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: EBADF: bad file descriptor, read
+
+npm ERR! Linux 4.4.0-1022-aws
+npm ERR! argv "/usr/bin/nodejs" "/usr/bin/npm" "start"
+npm ERR! node v7.10.1
+npm ERR! npm  v4.2.0
+npm ERR! code ELIFECYCLE
+npm ERR! errno 1
+npm ERR! querybot@1.0.0 start: `nodemon -e css,ejs,js,json --watch app `
+npm ERR! Exit status 1
+npm ERR! 
+npm ERR! Failed at the querybot@1.0.0 start script 'nodemon -e css,ejs,js,json --watch app '.
+npm ERR! Make sure you have the latest version of node.js and npm installed.
+npm ERR! If you do, this is most likely a problem with the querybot package,
+npm ERR! not with npm itself.
+npm ERR! Tell the author that this fails on your system:
+npm ERR!     nodemon -e css,ejs,js,json --watch app 
+npm ERR! You can get information on how to open an issue for this project with:
+npm ERR!     npm bugs querybot
+npm ERR! Or if that isn't available, you can get their info via:
+npm ERR!     npm owner ls querybot
+npm ERR! There is likely additional logging output above.
+
+npm ERR! Please include the following file with any support request:
+npm ERR!     /home/ubuntu/.npm/_logs/2017-08-31T06_59_03_739Z-debug.log
+Listening on port 3000
+{ Error: Pool is closed.
+    at Pool.getConnection (/home/ubuntu/queryBot/node_modules/mysql/lib/Pool.js:25:15)
+    at Pool.query (/home/ubuntu/queryBot/node_modules/mysql/lib/Pool.js:202:8)
+    at /home/ubuntu/queryBot/index.js:43:16
+    at Layer.handle [as handle_request] (/home/ubuntu/queryBot/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/ubuntu/queryBot/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/home/ubuntu/queryBot/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/home/ubuntu/queryBot/node_modules/express/lib/router/layer.js:95:5)
+    at /home/ubuntu/queryBot/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/home/ubuntu/queryBot/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/ubuntu/queryBot/node_modules/express/lib/router/index.js:275:10)
+    --------------------
+    at Pool.query (/home/ubuntu/queryBot/node_modules/mysql/lib/Pool.js:199:23)
+    at /home/ubuntu/queryBot/index.js:43:16
+    at Layer.handle [as handle_request] (/home/ubuntu/queryBot/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/ubuntu/queryBot/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/home/ubuntu/queryBot/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/home/ubuntu/queryBot/node_modules/express/lib/router/layer.js:95:5)
+    at /home/ubuntu/queryBot/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/home/ubuntu/queryBot/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/ubuntu/queryBot/node_modules/express/lib/router/index.js:275:10)
+    at urlencodedParser (/home/ubuntu/queryBot/node_modules/body-parser/lib/types/urlencoded.js:82:7) code: 'POOL_CLOSED' }
+{ Error: Pool is closed.
+    at Pool.getConnection (/home/ubuntu/queryBot/node_modules/mysql/lib/Pool.js:25:15)
+    at Pool.query (/home/ubuntu/queryBot/node_modules/mysql/lib/Pool.js:202:8)
+    at /home/ubuntu/queryBot/index.js:43:16
+    at Layer.handle [as handle_request] (/home/ubuntu/queryBot/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/ubuntu/queryBot/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/home/ubuntu/queryBot/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/home/ubuntu/queryBot/node_modules/express/lib/router/layer.js:95:5)
+    at /home/ubuntu/queryBot/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/home/ubuntu/queryBot/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/ubuntu/queryBot/node_modules/express/lib/router/index.js:275:10)
+    --------------------
+    at Pool.query (/home/ubuntu/queryBot/node_modules/mysql/lib/Pool.js:199:23)
+    at /home/ubuntu/queryBot/index.js:43:16
+    at Layer.handle [as handle_request] (/home/ubuntu/queryBot/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/ubuntu/queryBot/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/home/ubuntu/queryBot/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/home/ubuntu/queryBot/node_modules/express/lib/router/layer.js:95:5)
+    at /home/ubuntu/queryBot/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/home/ubuntu/queryBot/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/ubuntu/queryBot/node_modules/express/lib/router/index.js:275:10)
+    at urlencodedParser (/home/ubuntu/queryBot/node_modules/body-parser/lib/types/urlencoded.js:82:7) code: 'POOL_CLOSED' }
+{ Error: Pool is closed.
+    at Pool.getConnection (/home/ubuntu/queryBot/node_modules/mysql/lib/Pool.js:25:15)
+    at Pool.query (/home/ubuntu/queryBot/node_modules/mysql/lib/Pool.js:202:8)
+    at /home/ubuntu/queryBot/index.js:43:16
+    at Layer.handle [as handle_request] (/home/ubuntu/queryBot/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/ubuntu/queryBot/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/home/ubuntu/queryBot/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/home/ubuntu/queryBot/node_modules/express/lib/router/layer.js:95:5)
+    at /home/ubuntu/queryBot/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/home/ubuntu/queryBot/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/ubuntu/queryBot/node_modules/express/lib/router/index.js:275:10)
+    --------------------
+    at Pool.query (/home/ubuntu/queryBot/node_modules/mysql/lib/Pool.js:199:23)
+    at /home/ubuntu/queryBot/index.js:43:16
+    at Layer.handle [as handle_request] (/home/ubuntu/queryBot/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/ubuntu/queryBot/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/home/ubuntu/queryBot/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/home/ubuntu/queryBot/node_modules/express/lib/router/layer.js:95:5)
+    at /home/ubuntu/queryBot/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/home/ubuntu/queryBot/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/ubuntu/queryBot/node_modules/express/lib/router/index.js:275:10)
+    at urlencodedParser (/home/ubuntu/queryBot/node_modules/body-parser/lib/types/urlencoded.js:82:7) code: 'POOL_CLOSED' }
+{ Error: Pool is closed.
+    at Pool.getConnection (/home/ubuntu/queryBot/node_modules/mysql/lib/Pool.js:25:15)
+    at Pool.query (/home/ubuntu/queryBot/node_modules/mysql/lib/Pool.js:202:8)
+    at /home/ubuntu/queryBot/index.js:43:16
+    at Layer.handle [as handle_request] (/home/ubuntu/queryBot/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/ubuntu/queryBot/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/home/ubuntu/queryBot/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/home/ubuntu/queryBot/node_modules/express/lib/router/layer.js:95:5)
+    at /home/ubuntu/queryBot/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/home/ubuntu/queryBot/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/ubuntu/queryBot/node_modules/express/lib/router/index.js:275:10)
+    --------------------
+    at Pool.query (/home/ubuntu/queryBot/node_modules/mysql/lib/Pool.js:199:23)
+    at /home/ubuntu/queryBot/index.js:43:16
+    at Layer.handle [as handle_request] (/home/ubuntu/queryBot/node_modules/express/lib/router/layer.js:95:5)
+    at next (/home/ubuntu/queryBot/node_modules/express/lib/router/route.js:137:13)
+    at Route.dispatch (/home/ubuntu/queryBot/node_modules/express/lib/router/route.js:112:3)
+    at Layer.handle [as handle_request] (/home/ubuntu/queryBot/node_modules/express/lib/router/layer.js:95:5)
+    at /home/ubuntu/queryBot/node_modules/express/lib/router/index.js:281:22
+    at Function.process_params (/home/ubuntu/queryBot/node_modules/express/lib/router/index.js:335:12)
+    at next (/home/ubuntu/queryBot/node_modules/express/lib/router/index.js:275:10)
+    at urlencodedParser (/home/ubuntu/queryBot/node_modules/body-parser/lib/types/urlencoded.js:82:7) code: 'POOL_CLOSED' }
+
+> querybot@1.0.0 start /home/ubuntu/queryBot
+> nodemon -e css,ejs,js,json --watch app 
+
+[33m[nodemon] 1.11.0[39m
+[33m[nodemon] to restart at any time, enter `rs`[39m
+[33m[nodemon] watching: app[39m
+[32m[nodemon] starting `node index.js`[39m
+events.js:163
+      throw er; // Unhandled 'error' event
+      ^
+
+Error: EBADF: bad file descriptor, read
+
+npm ERR! Linux 4.4.0-1022-aws
+npm ERR! argv "/usr/bin/nodejs" "/usr/bin/npm" "start"
+npm ERR! node v7.10.1
+npm ERR! npm  v4.2.0
+npm ERR! code ELIFECYCLE
+npm ERR! errno 1
+npm ERR! querybot@1.0.0 start: `nodemon -e css,ejs,js,json --watch app `
+npm ERR! Exit status 1
+npm ERR! 
+npm ERR! Failed at the querybot@1.0.0 start script 'nodemon -e css,ejs,js,json --watch app '.
+npm ERR! Make sure you have the latest version of node.js and npm installed.
+npm ERR! If you do, this is most likely a problem with the querybot package,
+npm ERR! not with npm itself.
+npm ERR! Tell the author that this fails on your system:
+npm ERR!     nodemon -e css,ejs,js,json --watch app 
+npm ERR! You can get information on how to open an issue for this project with:
+npm ERR!     npm bugs querybot
+npm ERR! Or if that isn't available, you can get their info via:
+npm ERR!     npm owner ls querybot
+npm ERR! There is likely additional logging output above.
+
+npm ERR! Please include the following file with any support request:
+npm ERR!     /home/ubuntu/.npm/_logs/2017-08-31T07_19_44_321Z-debug.log
+Listening on port 3000

@@ -23,7 +23,6 @@ router.use(bodyParser.urlencoded({ extended: false }));
 
 
 var home=router.get('/',function(req,res){
-
   res.json({
     "status":200
   });
@@ -42,7 +41,7 @@ router.post('/api',function(req,res){
 
     var q= `INSERT INTO new_table VALUES ('','${query}','${dateTime}');`;
     connection.query(q,function(err,result){
-
+        
       if(err){
         console.log(err);
         res.json({
@@ -65,7 +64,6 @@ router.post('/api',function(req,res){
 
 })
 );
-
 
 var server = app.listen(app.get('port'), function() {
   console.log('Listening on port ' + app.get('port'));
