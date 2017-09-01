@@ -93,6 +93,31 @@ var loginpost=router.post('/loginpost',function(req,res){
 });
 app.use(loginpost);
 
+var loginverify=router.get('/loginverify',function(req,res){
+
+    var userName = req.body['username'];
+    var password = req.body['password'];
+
+    var q= `SELECT COUNT(*) AS code FROM users WHERE userName = ${userName} AND password = ${password};`;
+    connection.query(q,function(err,result){
+
+      if(err){
+        console.log(err);
+        res.json({
+          "status":"404",
+          "error":err
+        });
+      }
+      else {
+        res.json({
+          "status":"200",
+         "result":result
+        });
+      }
+    });
+});
+app.use(loginverify);
+
 app.use(
 
 router.post('/api',function(req,res){
