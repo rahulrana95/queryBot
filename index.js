@@ -71,7 +71,7 @@ var loginpost=router.get('/loginpost',function(req,res){
     var userName = req.body['username'];
     var password = req.body['password'];
 
-    var q= `INSERT INTO users VALUES ('','${userName}','${password}',GETDATE());`;
+    var q= `INSERT INTO users VALUES ('','${userName}','${password}','';`;
     connection.query(q,function(err,result){
 
       if(err){
