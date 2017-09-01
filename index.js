@@ -105,7 +105,11 @@ var loginverify=router.get('/loginverify',function(req,res){
     var userName = req.query.username;
     var password = req.query.password;
 
-    var q= `SELECT COUNT(*) AS code FROM users WHERE userName = ${userName} AND password = ${password};`;
+    /*bcrypt.compare(password, hash, function(err, res) {
+    // res == true
+  });*/
+
+    var q= `SELECT * FROM users WHERE userName = ${userName}`;
     connection.query(q,function(err,result){
 
       if(err){
@@ -116,9 +120,16 @@ var loginverify=router.get('/loginverify',function(req,res){
         });
       }
       else {
+        var check=0;
+        for(var r in result){
+          bcrypt.compare(password, result[r].password, function(err, res) {
+              check == 1;
+          });
+        }
+
         res.json({
           "status":"200",
-         "result":result
+          "result":check
         });
       }
     });
