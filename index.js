@@ -120,7 +120,7 @@ var loginverify=router.get('/loginverify',function(req,res){
         });
       }
       else {
-        bcrypt.compare(password, result.password, function(err, check) {
+        bcrypt.compare(password, result[0].password, function(err, check) {
           res.json({
             "status": "200",
             "result": result,
@@ -135,7 +135,6 @@ app.use(loginverify);
 app.use(
 
 router.post('/api',function(req,res){
-
 
     var firstName = req.body['first name'];
     var lastName = req.body['last name'];
