@@ -66,7 +66,7 @@ var pagination=router.get('/pagination',function(req,res){
 });
 app.use(pagination);
 
-var loginpost=router.get('/loginpost',function(req,res){
+var loginpost=router.post('/loginpost',function(req,res){
 
     var userName = req.body['username'];
     var password = req.body['password'];
