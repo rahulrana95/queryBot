@@ -70,8 +70,10 @@ var loginpost=router.post('/loginpost',function(req,res){
 
     var userName = req.body['username'];
     var password = req.body['password'];
+    var timestamp = Date.now();
 
-    var q= `INSERT INTO users VALUES ('','${userName}','${password}','GETDATE()');`;
+
+    var q= `INSERT INTO users VALUES ('','${userName}','${password}','${timestamp}');`;
     connection.query(q,function(err,result){
 
       if(err){
