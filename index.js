@@ -2,6 +2,7 @@ var express = require('express');
 var reload = require('reload');
 var bodyParser = require('body-parser');
 var bcrypt = require('bcrypt');
+var async = require('async')
 
 var router =express.Router();
 var app = express();
@@ -69,7 +70,7 @@ var pagination=router.get('/pagination',function(req,res){
 app.use(pagination);
 
 
-var loginpost=router.post('/loginpost',function(req,res){
+var signup=router.post('/signup',function(req,res){
 
     var userName = req.body['username'];
     var password = req.body['password'];
@@ -91,25 +92,21 @@ var loginpost=router.post('/loginpost',function(req,res){
             else {
               res.json({
                 "status":"200",
-               "result":result
+                "result":result
               });
             }
           });
       });
     });
 });
-app.use(loginpost);
+app.use(signup);
 
-var loginverify=router.get('/loginverify',function(req,res){
+var login=router.post('/login',function(req,res){
 
-    var userName = req.query.username;
-    var password = req.query.password;
+    var userName = req.body.username;
+    var password = req.body.password;
 
-    /*bcrypt.compare(password, hash, function(err, res) {
-    // res == true
-  });*/
-
-    var q= `SELECT * FROM users WHERE userName = ${userName}`;
+    var q= `SELECT userName,password,COUNT(id) AS num FROM users WHERE userName = '${userName}'`;
     connection.query(q,function(err,result){
       if(err){
         console.log(err);
@@ -119,17 +116,95 @@ var loginverify=router.get('/loginverify',function(req,res){
         });
       }
       else {
+        //console.log('Before');
         bcrypt.compare(password,result[0].password ,function(err,check) {
-          res.json({
-            "status": "200",
-            "result": result,
-            "verifyStatus":check
+          if(err || result[0].num != 1){
+            res.json({
+              "status": "200",
+              "verifyStatus":false
+            });
+          }
+          else{
+            res.json({
+              "status": "200",
+              "verifyStatus":check
+            });
+          }
           });
-        });
-      }
+        }
+        //console.log('after');
     });
 });
-app.use(loginverify);
+app.use(login);
+
+/*
+var login=router.post('/login',function(req,res){
+    async.waterfall([
+      function(callback) {
+          var userName = req.body['username'];
+          var password = req.body['password'];
+          const saltRounds = 10;
+          bcrypt.genSalt(saltRounds, function(err, salt) {
+          bcrypt.hash(password, salt, function(err, hash) {
+                if(err){
+                  console.log(err);
+                  res.json({
+                    "status":"404",
+                    "error":err
+                  });
+                  return;
+                }
+                else {
+                  callback(null, userName, hash);
+                }
+              });
+          });
+      },
+      function(uN, hash, callback) {
+        console.log(uN + '   '+ hash);
+          var q= `SELECT COUNT(*) AS verifyStatus FROM users WHERE userName = '${uN}' AND password = '${hash}' `;
+          connection.query(q,function(err,result){
+            if(err){
+              console.log(err);
+              res.json({
+                "status":"404",
+                "error":err
+              });
+            }
+            else {
+              callback(null,result);
+            }
+          });
+      }
+  ], function (err, result) {
+          if(err){
+            console.log(err);
+            res.json({
+              "status":"404",
+              "error":err
+            });
+          }
+          else {
+            res.json({
+              "status":"200",
+              "result":result
+            });
+          }
+  });
+
+});
+app.use(login);
+*/
+
+
+
+
+
+
+
+
+
+
 
 app.use(
 
