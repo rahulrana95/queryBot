@@ -120,7 +120,7 @@ var loginverify=router.get('/loginverify',function(req,res){
         });
       }
       else {
-        bcrypt.compare(password, result[0].password, function(err, check) {
+        bcrypt.compare(result[0].password , password , function(err, check) {
           res.json({
             "status": "200",
             "result": result,
