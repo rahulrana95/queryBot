@@ -74,7 +74,7 @@ var loginpost=router.post('/loginpost',function(req,res){
     var userName = req.body['username'];
     var password = req.body['password'];
     var timestamp = new Date().toISOString().slice(0, 19).replace('T', ' ');
-    const saltRounds = 10;
+    //const saltRounds = 10;
     bcrypt.genSalt(saltRounds, function(err, salt) {
     bcrypt.hash(password, salt, function(err, hash) {
 
@@ -120,11 +120,11 @@ var loginverify=router.get('/loginverify',function(req,res){
         });
       }
       else {
-        bcrypt.compare(result[0].password , password , function(err,res) {
+        bcrypt.compare(result[0].password , password , function(err,check) {
           res.json({
             "status": "200",
             "result": result,
-            "verifyStatus":res
+            "verifyStatus":check
           });
         });
       }
