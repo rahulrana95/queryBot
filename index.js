@@ -120,16 +120,13 @@ var loginverify=router.get('/loginverify',function(req,res){
         });
       }
       else {
-
-        for(var r in result){
-          bcrypt.compare(password, result[r].password, function(err, check) {
-            res.json({
-              "status": "200",
-              "result": result,
-              "verifyStatus":check
-            });
+        bcrypt.compare(password, result.password, function(err, check) {
+          res.json({
+            "status": "200",
+            "result": result,
+            "verifyStatus":check
           });
-        }
+        });
       }
     });
 });
