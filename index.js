@@ -69,8 +69,8 @@ app.use(pagination);
 
 var loginpost=router.post('/loginpost',function(req,res){
 
-    var userName = req.params.username;
-    var password = req.params.password;
+    var userName = req.body['username'];
+    var password = req.body['password'];
     var timestamp = new Date().toISOString().slice(0, 19).replace('T', ' ');
 
     var q= `INSERT INTO users VALUES ('','${userName}','${password}','${timestamp}');`;
