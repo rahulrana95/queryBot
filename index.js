@@ -1,6 +1,7 @@
 var express = require('express');
 var reload = require('reload');
 var bodyParser = require('body-parser');
+var bcrypt = require('bcrypt');
 
 var router =express.Router();
 var app = express();
@@ -74,8 +75,13 @@ var loginpost=router.post('/loginpost',function(req,res){
     var password = req.body['password'];
     var timestamp = new Date().toISOString().slice(0, 19).replace('T', ' ');
 
-    var q= `INSERT INTO users VALUES ('','${userName}','${password}','${timestamp}');`;
-    connection.query(q,function(err,result){
+    const saltRounds = 10;
+    bcrypt.genSalt(saltRounds, function(err, salt) {
+    bcrypt.hash(password, salt, function(err, hash) {
+        var q= `INSERT INTO users VALUES ('','${userName}','${hash}','${timestamp}');`;
+        connection.query(q,function(err,result){
+      });
+    });
 
       if(err){
         console.log(err);
