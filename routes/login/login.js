@@ -1,3 +1,7 @@
+/**
+  All tests done successfully
+**/
+
 var express = require('express');
 var reload = require('reload');
 var bodyParser = require('body-parser');
@@ -10,6 +14,8 @@ var login=router.post('/login',function(req,res){
     var connection = req.app.get('connection');
     var userName = req.body.username;
     var password = req.body.password;
+
+
 
     var q= `SELECT userName,password,COUNT(id) AS num FROM users WHERE userName = '${userName}'`;
     connection.query(q,function(err,result){

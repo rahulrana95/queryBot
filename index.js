@@ -88,6 +88,7 @@ app.set('connection',connection);
 app.use(require('./routes/login/login.js'));
 app.use(require('./routes/signup/signup.js'));
 app.use(require('./routes/pagination/pagination.js'));
+app.use(require('./routes/user.js'));
 
 var server = app.listen(app.get('port'), function() {
   console.log('Listening on port ' + app.get('port'));
