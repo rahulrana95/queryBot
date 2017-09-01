@@ -42,7 +42,6 @@ var home=router.get('/complaint',function(req,res){
       }
     });
 });
-
 app.use(home);
 
 var pagination=router.get('/pagination',function(req,res){
@@ -65,9 +64,32 @@ var pagination=router.get('/pagination',function(req,res){
       }
     });
 });
-
 app.use(pagination);
 
+var loginpost=router.get('/loginpost',function(req,res){
+
+    var userName = req.body['first name'];
+    var password = req.body['last name'];
+
+    var q= `INSERT INTO complaint VALUES ('','${userName}','${password}',GETDATE());`;
+    connection.query(q,function(err,result){
+
+      if(err){
+        console.log(err);
+        res.json({
+          "status":"404",
+          "error":err
+        });
+      }
+      else {
+        res.json({
+          "status":"200",
+         "result":result
+        });
+      }
+    });
+});
+app.use(loginpost);
 
 app.use(
 
