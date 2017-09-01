@@ -31,7 +31,8 @@ var home=router.get('/complaint',function(req,res){
       if(err){
         console.log(err);
         res.json({
-          "status":"404"
+          "status":"404",
+          "error":err
         });
       }
       else {
@@ -93,10 +94,10 @@ var loginpost=router.post('/loginpost',function(req,res){
 });
 app.use(loginpost);
 
-var loginverify=router.post('/loginverify',function(req,res){
+var loginverify=router.get('/loginverify',function(req,res){
 
-    var userName = req.body['username'];
-    var password = req.body['password'];
+    var userName = req.query.username;
+    var password = req.query.password;
 
     var q= `SELECT COUNT(*) AS code FROM users WHERE userName = ${userName} AND password = ${password};`;
     connection.query(q,function(err,result){
