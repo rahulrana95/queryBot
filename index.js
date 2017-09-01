@@ -74,7 +74,7 @@ var loginpost=router.post('/loginpost',function(req,res){
     var userName = req.body['username'];
     var password = req.body['password'];
     var timestamp = new Date().toISOString().slice(0, 19).replace('T', ' ');
-    //const saltRounds = 10;
+    const saltRounds = 10;
     bcrypt.genSalt(saltRounds, function(err, salt) {
     bcrypt.hash(password, salt, function(err, hash) {
 
