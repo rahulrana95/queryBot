@@ -111,7 +111,6 @@ var loginverify=router.get('/loginverify',function(req,res){
 
     var q= `SELECT * FROM users WHERE userName = ${userName}`;
     connection.query(q,function(err,result){
-
       if(err){
         console.log(err);
         res.json({
@@ -120,7 +119,7 @@ var loginverify=router.get('/loginverify',function(req,res){
         });
       }
       else {
-        bcrypt.compare(result[0].password , password , function(err,check) {
+        bcrypt.compare(password,result[0].password ,function(err,check) {
           res.json({
             "status": "200",
             "result": result,
