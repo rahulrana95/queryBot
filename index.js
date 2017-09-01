@@ -68,8 +68,8 @@ app.use(pagination);
 
 var loginpost=router.get('/loginpost',function(req,res){
 
-    var userName = req.body['first name'];
-    var password = req.body['last name'];
+    var userName = req.body['username'];
+    var password = req.body['password'];
 
     var q= `INSERT INTO complaint VALUES ('','${userName}','${password}',GETDATE());`;
     connection.query(q,function(err,result){
