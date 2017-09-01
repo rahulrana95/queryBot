@@ -93,7 +93,7 @@ var loginpost=router.post('/loginpost',function(req,res){
 });
 app.use(loginpost);
 
-var loginverify=router.get('/loginverify',function(req,res){
+var loginverify=router.post('/loginverify',function(req,res){
 
     var userName = req.body['username'];
     var password = req.body['password'];
