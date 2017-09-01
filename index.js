@@ -66,13 +66,17 @@ var pagination=router.get('/pagination',function(req,res){
 });
 app.use(pagination);
 
+function twoDigits(d) {
+    if(0 <= d && d < 10) return "0" + d.toString();
+    if(-10 < d && d < 0) return "-0" + (-1*d).toString();
+    return d.toString();
+}
 var loginpost=router.post('/loginpost',function(req,res){
 
     var userName = req.body['username'];
     var password = req.body['password'];
-    var timestamp = Date.now();
-
-
+    var timestamp = Date.getUTCFullYear() + "-" + twoDigits(1 + Date.getUTCMonth()) + "-" + twoDigits(Date.getUTCDate()) + " " + twoDigits(Date.getUTCHours()) + ":" + twoDigits(Date.getUTCMinutes()) + ":" + twoDigits(Date.getUTCSeconds());
+    
     var q= `INSERT INTO users VALUES ('','${userName}','${password}','${timestamp}');`;
     connection.query(q,function(err,result){
 
