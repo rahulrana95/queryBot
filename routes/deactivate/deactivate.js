@@ -11,6 +11,7 @@ var router = express.Router();
 
 var deactivate = router.post('/deactivate',function(req,res){
     var connection = req.app.get('connection');
+    console.log(req.body);
     var list = req.body.id;
 
     if(list === undefined || list.length <= 0){
