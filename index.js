@@ -24,7 +24,7 @@ router.use(bodyParser.urlencoded({ extended: false }));
 var home=router.get('/complaint',function(req,res){
     var off=10*parseInt(req.query.offset);
 
-    var q= `SELECT * FROM complaint WHERE statusCheck = 1 LIMIT 10 OFFSET ${off} `;
+    var q= `SELECT * FROM complaint LIMIT 10 OFFSET ${off} `;
     connection.query(q,function(err,result){
 
       if(err){
@@ -44,6 +44,28 @@ var home=router.get('/complaint',function(req,res){
 });
 app.use(home);
 
+var home1=router.get('/complaint1',function(req,res){
+    var off=10*parseInt(req.query.offset);
+
+    var q= `SELECT * FROM complaint WHERE statusCheck = 1 LIMIT 10 OFFSET ${off} `;
+    connection.query(q,function(err,result){
+
+      if(err){
+        console.log(err);
+        res.json({
+          "status":"404",
+          "error":err
+        });
+      }
+      else {
+        res.json({
+          "status":"200",
+         "result":result
+        });
+      }
+    });
+});
+app.use(home1);
 
 app.use(
 
@@ -89,6 +111,8 @@ app.use(require('./routes/login/login.js'));
 app.use(require('./routes/signup/signup.js'));
 app.use(require('./routes/pagination/pagination.js'));
 app.use(require('./routes/user.js'));
+app.use(require('./routes/deactivate/deactivate.js'));
+app.use(require('./routes/activate/activate.js'));
 
 var server = app.listen(app.get('port'), function() {
   console.log('Listening on port ' + app.get('port'));
