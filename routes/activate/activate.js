@@ -34,7 +34,7 @@ var activate = router.post('/activate',function(req,res){
           if(flag === 0 )
           {
             flag=1;
-            console.log(k);
+            //console.log(k);
             res.json({
               "status":"200",
               "result":result
