@@ -21,8 +21,8 @@ app.set('port',  process.env.PORT || 3000 );
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended : false }));
 var home = router.get('/complaint', function(req, res){
-    var off = 10*parseInt(req.query.offset);
-    var q = `SELECT * FROM complaint LIMIT 10 OFFSET ${off} `;
+    var off = 50*parseInt(req.query.offset);
+    var q = `SELECT * FROM complaint ORDER BY id DESC LIMIT 50 OFFSET ${off} `;
     connection.query(q, function(err, result) {
       if (err) {
         console.log(err);
@@ -41,8 +41,8 @@ var home = router.get('/complaint', function(req, res){
 });
 app.use(home);
 var home1 = router.get('/complaint1', function(req, res) {
-    var off = 10*parseInt(req.query.offset);
-    var q = `SELECT * FROM complaint WHERE statusCheck = 1 LIMIT 10 OFFSET ${off} `;
+    var off = 50*parseInt(req.query.offset);
+    var q = `SELECT * FROM complaint WHERE statusCheck = 1 ORDER BY id DESC LIMIT 50 OFFSET ${off} `;
     connection.query(q, function(err, result) {
       if (err) {
         console.log(err);
