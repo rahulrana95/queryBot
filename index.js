@@ -8,7 +8,13 @@ var bcrypt = require('bcrypt');
 var cors = require('cors');
 var router = express.Router();
 var app = express();
-var mysql = require('mysql')
+var mysql = require('mysql');
+var cloudinary = require('cloudinary');
+cloudinary.config({
+  cloud_name: 'dtqquwvdx',
+  api_key: '886457756552888',
+  api_secret: 'BSftR6KNljrU2Jc9JixNrGyWdxc'
+});
 var connection = mysql.createPool({
   host     : 'testbot.c0ccjbvvdqns.us-east-2.rds.amazonaws.com',
   user     : 'maniax',
@@ -60,6 +66,7 @@ var home1 = router.get('/complaint1', function(req, res) {
     });
 });
 app.use(home1);
+
 app.use(
   router.post('/api', function(req, res){
       var firstName = req.body['first name'];
@@ -75,21 +82,27 @@ app.use(
       var mapURL = req.body['map url'];
       var state = req.body['state'];
       var statusCheck = 1;
-      var q = `INSERT INTO complaint VALUES ('', '${firstName}', '${lastName}', '${messengerUserId}', '${details}', '${photo}', '${address}', '${city}', '${country}', '${gender}', '${description}', '${mapURL}', '${state}', '${statusCheck}');`;
-      connection.query(q, function(err, result) {
-        if (err) {
-          console.log(err);
-          res.json({
-            "status" : "404",
-            "error" : err
-          });
-        }
-        else {
-          res.json({
-            "status" : "200",
-            "result" : result
-          });
-        }
+      var image;
+
+      cloudinary.uploader.upload(photo, function(result) {
+        image = result.url;
+        //console.log(result);
+        var q = `INSERT INTO complaint VALUES ('', '${firstName}', '${lastName}', '${messengerUserId}', '${details}', '${image}', '${address}', '${city}', '${country}', '${gender}', '${description}', '${mapURL}', '${state}', '${statusCheck}');`;
+        connection.query(q, function(err, result) {
+          if (err) {
+            console.log(err);
+            res.json({
+              "status" : "404",
+              "error" : err
+            });
+          }
+          else {
+            res.json({
+              "status" : "200",
+              "result" : result
+            });
+          }
+        });
       });
   })
 );
