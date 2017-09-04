@@ -10,7 +10,7 @@ var login = router.post('/login',function(req,res){
     var connection = req.app.get('connection');
     var userName = req.body.username;
     var password = req.body.password;
-    var q= `SELECT userName,password,COUNT(id) AS num FROM users WHERE userName = '${userName}'`;
+    var q= `SELECT userName,password,COUNT(id) AS num,user FROM users WHERE userName = '${userName}'`;
     connection.query(q, function(err, result) {
       if (err) {
         console.log(err);
@@ -30,7 +30,8 @@ var login = router.post('/login',function(req,res){
           else {
             res.json({
               "status" : "200",
-              "verifyStatus" : check
+              "verifyStatus" : check,
+              "user":result[0].user
             });
           }
           });
