@@ -23,7 +23,7 @@ var connection = mysql.createPool({
   port     : 3306
 });
 app.use(cors());
-app.set('port',  process.env.PORT || 4000 );
+app.set('port',  process.env.PORT || 3000 );
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended : false }));
 var home = router.get('/complaint', function(req, res){
