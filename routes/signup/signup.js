@@ -10,6 +10,7 @@ var signup = router.post('/signup', function(req,res) {
     var connection = req.app.get('connection');
     var userName = req.body['username'];
     var password = req.body['password'];
+    var user = req.body['user'];
     if (userName === undefined || password === undefined || userName.length <= 0 || password.length <= 0) {
       res.json({
         "status" : "404",
@@ -21,7 +22,7 @@ var signup = router.post('/signup', function(req,res) {
     const saltRounds = 10;
     bcrypt.genSalt(saltRounds, function(err, salt) {
       bcrypt.hash(password, salt, function(err, hash) {
-          var q= `INSERT INTO users VALUES ('','${userName}','${hash}','${timestamp}');`;
+          var q= `INSERT INTO users VALUES ('','${userName}','${hash}','${timestamp}','${user}');`;
           connection.query(q,function(err,result) {
               if (err) {
                 console.log(err);
