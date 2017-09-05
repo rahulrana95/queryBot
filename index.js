@@ -23,7 +23,7 @@ var connection = mysql.createPool({
   port     : 3306
 });
 app.use(cors());
-app.set('port',  process.env.PORT || 3000 );
+app.set('port',  process.env.PORT || 4000 );
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({ extended : false }));
 var home = router.get('/complaint', function(req, res){
@@ -86,7 +86,7 @@ app.use(
 
       cloudinary.uploader.upload(photo, function(result) {
         image = result.url;
-        //console.log(result);
+        console.log(result.url);
         var q = `INSERT INTO complaint VALUES ('', '${firstName}', '${lastName}', '${messengerUserId}', '${details}', '${image}', '${address}', '${city}', '${country}', '${gender}', '${description}', '${mapURL}', '${state}', '${statusCheck}');`;
         connection.query(q, function(err, result) {
           if (err) {
