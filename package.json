@@ -4,7 +4,7 @@
   "description": "get query from bot and add to db",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon -e css,ejs,js,json --watch app "
+    "start": "nodemon index.js -e css,ejs,js,json  "
   },
   "author": "",
   "license": "MIT",

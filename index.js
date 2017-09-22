@@ -1,6 +1,7 @@
 /**
 All tests done successfully
 **/
+
 var express = require('express');
 var reload = require('reload');
 var bodyParser = require('body-parser');
@@ -11,9 +12,9 @@ var app = express();
 var mysql = require('mysql');
 var cloudinary = require('cloudinary');
 cloudinary.config({
-  cloud_name: 'dtqquwvdx',
-  api_key: '886457756552888',
-  api_secret: 'BSftR6KNljrU2Jc9JixNrGyWdxc'
+  cloud_name: 'dhpyfeq0n',
+  api_key: '325643915669763',
+  api_secret: 'SdchmAzUyWzI9qnqS2HZhyb5Wko'
 });
 var connection = mysql.createPool({
   host     : 'testbot.c0ccjbvvdqns.us-east-2.rds.amazonaws.com',
@@ -86,6 +87,7 @@ app.use(
 
       cloudinary.uploader.upload(photo, function(result) {
         image = result.url;
+        console.log(photo);
         console.log(result.url);
         var q = `INSERT INTO complaint VALUES ('', '${firstName}', '${lastName}', '${messengerUserId}', '${details}', '${image}', '${address}', '${city}', '${country}', '${gender}', '${description}', '${mapURL}', '${state}', '${statusCheck}');`;
         connection.query(q, function(err, result) {
